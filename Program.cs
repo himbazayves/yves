@@ -4,206 +4,163 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace workcsharp
+namespace ConsoleApp1
+{
+    class Class1
+    {
+
+
+        public int a;
+        public int b;
+        public int op;
+
+
+
+        public static double add(int a, int b)
+        {
+
+            return a + b;
+        }
+        public static double sub(int a, int b)
+        {
+
+            return a - b;
+        }
+
+        public static double mult(int a, int b)
+        {
+            return a * b;
+        }
+        public static double div(int a, int b)
+
+        {
+            return a / b;
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+namespace ConsoleApp1
 {
     class Program
     {
         static void Main(string[] args)
         {
+            var cal = new Class1();
 
-            Emp emp1 = new Emp("", 1, 1, 2);
 
-            Console.WriteLine("inter your name");
-            emp1.name = Console.ReadLine();
-            Console.WriteLine("inter you id");
-            emp1.id = Convert.ToInt32(Console.ReadLine());
 
-            if ((emp1.name != null) && (emp1.id != null))
+            Console.WriteLine("plesea inter type of op");
+            Console.WriteLine("**********************");
+            Console.WriteLine("1.additi");
+            Console.WriteLine("2.substaract");
+            Console.WriteLine("3.multi");
+            Console.WriteLine("4.div");
+
+            cal.op = Convert.ToInt32(Console.ReadLine());
+
+            if (cal.op == 1)
             {
-
-                Console.WriteLine("please select type of employment");
-                Console.WriteLine("_________________________________");
-
-
-                Console.WriteLine("1.Montnly employee");
-                Console.WriteLine("2.Temorary employee");
-                Console.WriteLine("3.Evenning employee");
-
-                emp1.type = Convert.ToInt32(Console.ReadLine());
-
-                if (emp1.type == 1)
-                {
-
-                    emp1.salary(emp1.gross);
+                Console.WriteLine("plesea inter first number ");
+                cal.a = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("plesea inter second number ");
+                cal.b = Convert.ToInt32(Console.ReadLine());
 
 
 
-
-
-
-
-
-
-                }
-
-                else if (emp1.type == 2)
-                {
-
-                    emp1.salary(emp1.hours, emp1.hour_salary);
-
-
-
-
-
-
-                }
-
-
-                else if (emp1.type == 3)
-                {
-
-
-                    emp1.salary(emp1.hours, emp1.hour_salary, emp1.bonus, emp1.net_before_bonus);
-
-
-
-
-
-
-
-
-
-                }
-
-                else Console.WriteLine(" invalid type of employment");
-
-
-
-
+                Console.WriteLine("sum of{0} and{1} is {2}", cal.a, cal.b, Class1.add(cal.a, cal.b));
                 Console.ReadLine();
+
+
             }
 
-            else Console.WriteLine(" ivalid ID or name");
+            else if (cal.op == 2)
+            {
+                Console.WriteLine("plesea inter first number ");
+                cal.a = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("plesea inter second number ");
+                cal.b = Convert.ToInt32(Console.ReadLine());
+
+
+
+                Console.WriteLine("product  of{0} and{1} is {2}", cal.a, cal.b, Class1.sub(cal.a, cal.b));
+                Console.ReadLine();
+
+
+
+
+            }
+
+            else if (cal.op == 3)
+            {
+                Console.WriteLine("plesea inter first number ");
+                cal.a = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("plesea inter second number ");
+                cal.b = Convert.ToInt32(Console.ReadLine());
+                if (cal.b != 0)
+                {
+                    Console.WriteLine("product  of{0} and{1} is {2}", cal.a, cal.b, Class1.mult(cal.a, cal.b));
+                    Console.ReadLine();
+
+                }
+
+
+
+                else { Console.WriteLine(" second number must be different to zero"); }
+
+               
+                
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+            else if (cal.op == 4)
+            {
+                Console.WriteLine("plesea inter first number ");
+                cal.a = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("plesea inter second number ");
+                cal.b = Convert.ToInt32(Console.ReadLine());
+
+
+
+                Console.WriteLine("product  of{0} and{1} is {2}", cal.a, cal.b, Class1.div(cal.a, cal.b));
+                Console.ReadLine();
+
+
+            }
+
+            else Console.WriteLine("invalid op");
 
 
 
 
         }
-
-
-
-
-
     }
 }
 
 
-class Emp
-{
-    public string name;
-    public int id;
-    public int type;
-    public int gross;
-    public int net;
-    public int hours;
-    public int hour_salary;
 
 
-    public int gross1;
-    public int bonus;
-    public int net_before_bonus;
-
-
-
-
-    public Emp(string aName, int aId, int atype, int aGross)
-
-    {
-        name = aName;
-        id = aId;
-        type = atype;
-        gross = aGross;
-
-
-    }
-
-
-    public void salary(int gross)
-    {
-
-
-
-
-
-
-        Console.WriteLine("please inter montly salary");
-
-        gross = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine("employee name : " + name);
-        Console.WriteLine("employee ID : " + id);
-        Console.WriteLine("type of  employement : Montly employement");
-        Console.WriteLine("gross salary: " + gross);
-        Console.WriteLine("net salary " + (gross - (gross * 21) / 100));
-
-
-
-
-
-
-
-
-    }
-
-
-    public void salary(int hours, int hour_salary)
-    {
-
-        Console.WriteLine("Please inter your total  number of days you work");
-        hours = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine("Please inter your daily salary");
-
-        hour_salary = Convert.ToInt32(Console.ReadLine());
-
-
-        gross = (hours * hour_salary);
-        net = (gross - (gross * 18) / 100);
-
-        Console.WriteLine("employee name : " + name);
-        Console.WriteLine("employee ID : " + id);
-        Console.WriteLine("type of  employement : Temporay employement");
-        Console.WriteLine("total number of hours: " + hours);
-        Console.WriteLine("hour salary: " + hour_salary);
-        Console.WriteLine("Gross salary: " + gross);
-        Console.WriteLine("net salary" + net);
-
-    }
-
-    public void salary(int nights, int hour_salary, double bonus, int net_before_bonus)
-    {
-        Console.WriteLine("please inter  your total number of hours ");
-        hours = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine("please inter  your one  hour salry ");
-
-        hour_salary = Convert.ToInt32(Console.ReadLine());
-        gross = (hours * hour_salary);
-        bonus = ((gross * 0.15) / 100);
-
-
-        net_before_bonus = (gross - ((gross * 18) / 100));
-        net = Convert.ToInt32(net_before_bonus + bonus);
-
-
-        Console.WriteLine("employee name : " + name);
-        Console.WriteLine("employee ID : " + id);
-        Console.WriteLine("type of  employement : evening employment");
-        Console.WriteLine("total number of hours: " + hours);
-        Console.WriteLine("hour salary: " + hour_salary);
-        Console.WriteLine("Gross salary: " + gross);
-        Console.WriteLine("net salary: " + net);
-
-
-
-
-    }
-
-}
